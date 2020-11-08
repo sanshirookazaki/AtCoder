@@ -18,23 +18,24 @@ func main() {
 	sort.Ints(list)
 	var c int
 	var r []int
+
 	for i, v := range list {
-		countable := true
 		if contain(v, r) {
-			break
+			continue
 		}
+
+		f := true
 		for j := i + 1; j < n; j++ {
-			if v == list[j] {
-				break
+			if list[j] == v {
+				r = append(r, list[j])
+				f = false
 			}
 
 			if list[j]%v == 0 {
 				r = append(r, list[j])
-				countable = false
-				continue
 			}
 		}
-		if countable == true {
+		if f == true {
 			c++
 		}
 	}
